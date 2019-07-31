@@ -1,0 +1,23 @@
+﻿  <!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" /> <!--~ in ASP.NET means the server-side application root (so ~/index.aspx would be translated to
+                                                                           the URL of the index.aspx file that's in the application's root)-->
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container">
+        @RenderBody()
+    </div>
+    @{
+        if (IsSectionDefined("Scripts"))
+        {
+            RenderSection("Scripts", required: true);
+        }
+
+    }
+
+</body>
+</html>

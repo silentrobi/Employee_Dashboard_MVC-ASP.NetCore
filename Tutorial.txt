@@ -1,0 +1,4 @@
+﻿IConfiguration Service can read/ modify configuration files  (	"appsettings.json", appsettings.{environment}.json), 
+User secrets, Environmet variables and CommandLine Agruments.
+MiddleWare --> handle HTTP request and response.
+Middleware Interface IApplicationBuilder	

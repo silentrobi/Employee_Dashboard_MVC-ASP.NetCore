@@ -1,0 +1,38 @@
+﻿@model  HomeDetailsViewModel
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employee Detail";
+}
+    <!-- _Layout.cshtml has the common html codes for the all cshtml files.-->
+<div class="row justify-content-center m-3">
+    <div class=" col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Employee.Name</h1>
+            </div>
+            <div class=" card-body text-center">
+                <!--asp-append-version (image tag helper) helps to provide cache busting behavior for static 
+                    image files based on the content of the image ,a unique hash value is calculated 
+                    and appended to image URL. Each time the image on the server changes a new hash value 
+                    is calculated and cached-->
+                <img class="card-img-top" src="~/images/photo.jpg" asp-append-version="true" />
+                <h4>Employee ID: @Model.Employee.Id</h4>
+                <h4>Employee Email: @Model.Employee.Email</h4>
+                <h4>Employee Department: @Model.Employee.Department</h4>
+
+            </div>
+            <div class="card-footer text-center">
+                <!--to nevigate through links using link tag helper-->
+                <a asp-controller="Home" asp-action="AllEmployees" class="btn btn-primary"> Back</a>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+    @section Scripts {
+        <script src="~/js/CustomScript.js"></script>
+    }
+       

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Employee>
+<!--explicit namespace is defined in _ViewImports.cshtml-->
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; //we can use _ViewStart.cshtml to optimize file organization.
+    ViewBag.Title = "All Employees";
+
+}
+<div class="card-deck">
+    @{
+        foreach (var employee in Model)
+        {
+            <div class="card m-3">
+
+                <div class="card-header">
+                    <h3>@employee.Name</h3>
+                </div>
+                <!--asp-append-version (image tag helper) helps to provide cache busting behavior for static image files
+                    based on the content of the image ,a unique hash value is calculated and appended to image URL-->
+                <img class="card-img-top" src="~/images/photo.jpg" asp-append-version="true" />
+                <div class="card-footer text-center">
+                    <!--to nevigate through links using link tag helper-->
+                    <a asp-controller="home" asp-action="details" asp-route-id="@employee.Id" class="btn btn-primary"> View</a>
+                    <!--<a href="///Url.Action("details", "home", new { id = employee.Id})" class="btn btn-primary">View</a>-->
+                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        }
+    }
+
+</div>
