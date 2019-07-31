@@ -3,8 +3,32 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" /> <!--~ in ASP.NET means the server-side application root (so ~/index.aspx would be translated to
-                                                                           the URL of the index.aspx file that's in the application's root)-->
+    <!-- Environment tag helper: It basically helps in our project to choose bootsrap.css file for
+        development environment and bootsrap.min.css file for production or stating environment.  -->
+    <!--If env is Development then local bootsrap file will be loaded-->
+    <environment include="Development">
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <!--~ in ASP.NET means the server-side application root (so ~/index.aspx would be translated to
+        the URL of the index.aspx file that's in the application's root)-->
+    </environment>
+    <!--If env is not Development then file will be loaded from CDN url-->
+    <environment exclude="Development">
+        <!-- asp-suppress-fallback-integrity turn off integraty check for local source-->
+        <!--when server fails to laod bootstrap file from CDN url then we
+    redirect the system to load local bootstrap file using following commands.
+        Those command use JS to check weather system succesfully downloaded from CDN URL or not. -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous"
+              asp-fallback-href="~/lib/bootstrap/css/bootstrap.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="positive"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true">
+
+
+
+    </environment>
     <title>@ViewBag.Title</title>
 </head>
 <body>
